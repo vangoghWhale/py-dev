@@ -28,6 +28,9 @@ def create_app(test_config=None):
     from . import auth
 
     db.init_app(app)
-    app.register_blueprint(auth.bp)
-    
+    blueprints = [auth.bp, auth.bp1, auth.bp_home]
+
+    for blueprint in blueprints:
+        app.register_blueprint(blueprint)
+
     return app
